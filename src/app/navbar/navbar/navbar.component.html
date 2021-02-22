@@ -1,0 +1,6 @@
+<div class="navbarBody px-3 py-1">
+    <div *ngFor="let link of links" routerLink={{link.route}}
+        class="d-inline-block rounded p-2 navbarLinkBtn mr-2 text-white fw-bold" role="button">
+        {{link.name}}
+    </div>
+</div>

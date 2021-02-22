@@ -1,0 +1,12 @@
+@import "./../../../assets/styles/vars";
+.navbarBody {
+    background-color: $angularBlue;
+    .navbarLinkBtn {
+        &:hover {
+            background-color: #ffffff77;
+        }
+        &.active{
+            color: red !important;
+        }
+    }
+}

@@ -1,0 +1,47 @@
+@import "./../../../assets/styles/vars";
+
+input.ng-touched.ng-invalid {
+    border: 1px solid red;
+}
+.inputWrapper {
+    background: transparent linear-gradient(276deg, $mediumGrey 0%, $very_light_grey 100%) 0% 0% no-repeat padding-box;
+    box-shadow: 3px 3px 3px $very_light_grey, -3px -3px 3px $white;
+    border-radius: 20px;
+    padding: 5px 15px;
+
+    //select
+    select {
+        border: 0px;
+        background: transparent;
+        height: 30px;
+        font-weight: 500;
+        option {
+            background: $very_light_grey;
+            padding: 15px;
+        }
+    }
+
+    //input
+    input {
+        border: 0px;
+        background: transparent;
+        height: 30px;
+        font-weight: 500;
+    }
+}
+.form-group {
+    label {
+        &:first-child{
+
+            padding-left: 20px;
+            font-weight: 600;
+            color: $darkBlue;
+        }
+    }
+    .formErrorWrapper {
+        .formError {
+            color: red;
+            padding-left: 20px;
+        }
+    }
+}

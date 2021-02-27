@@ -18,12 +18,14 @@ export class BasicsComponent implements OnInit {
     this.displayPara = !this.displayPara;
   }
 
-  todoItems: Array<string> = [];
+  todoItems: Array<string> = ['asd', 'asd', 'asd', 'asd', 'asdasdasdadadsadsadadasdasdasdasdsdsadsadasdsa'];
   inputText: string = "";
 
   addTodo() {
-    this.todoItems.push(this.inputText);
-    this.inputText = "";
+    if (this.inputText) {
+      this.todoItems.push(this.inputText);
+      this.inputText = "";
+    }
   }
   updateInput(event: any) {
     this.inputText = event?.target?.value;

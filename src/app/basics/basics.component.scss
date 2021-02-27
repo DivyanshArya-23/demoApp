@@ -1,6 +1,11 @@
 @import "./../../assets/styles/vars";
-.addBtn{
+.addBtn {
     border-radius: 20px;
     padding-right: 8px !important;
     font-size: 12px;
+}
+.ul {
+    li:nth-child(5n) {
+        background-color: $angularBlue;
+    }
 }

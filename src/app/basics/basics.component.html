@@ -16,7 +16,7 @@
     </p>
     <div class="flex-row flex-column justify-content-center">
         <h3>To-do List</h3>
-        <input (change)="updateInput($event)" type="text" [{value}]="inputText">
+        <input type="text" [(ngModel)]="inputText">
         <span (click)="addTodo()" class="btn btn-primary p-1 ml-2 addBtn">
             <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-plus"
                 viewBox="0 0 16 16">

@@ -7,8 +7,10 @@
                     <div class="inputWrapper">
                         <input type="text" id="name" class="form-control" formControlName="name">
                     </div>
-                    <span class="formErrorWrapper" *ngIf="signupForm.get('name')?.touched && signupForm.get('name')?.errors">
-                        <small class="form-text formError" *ngIf="signupForm.get('name')?.errors?.required" >Enter Name</small>
+                    <span class="formErrorWrapper"
+                        *ngIf="signupForm.get('name')?.touched && signupForm.get('name')?.errors">
+                        <small class="form-text formError" *ngIf="signupForm.get('name')?.errors?.required">Enter
+                            Name</small>
                     </span>
                 </div>
                 <div class="form-group">
@@ -27,9 +29,12 @@
                     <div class="inputWrapper">
                         <input type="email" id="email" class="form-control" formControlName="email">
                     </div>
-                    <span class="formErrorWrapper" *ngIf="signupForm.get('email')?.touched && signupForm.get('email')?.errors">
-                        <small class="form-text formError" *ngIf="signupForm.get('email')?.errors?.required" >Enter Email</small>
-                        <small class="form-text formError" *ngIf="signupForm.get('email')?.errors?.pattern" >Enter A Valid
+                    <span class="formErrorWrapper"
+                        *ngIf="signupForm.get('email')?.touched && signupForm.get('email')?.errors">
+                        <small class="form-text formError" *ngIf="signupForm.get('email')?.errors?.required">Enter
+                            Email</small>
+                        <small class="form-text formError" *ngIf="signupForm.get('email')?.errors?.pattern">Enter A
+                            Valid
                             Email</small>
                     </span>
                 </div>
@@ -51,10 +56,12 @@
                 <div class="form-group">
                     <label for="name">Technology</label>
                     <div class="flex-row">
-
-                        <div *ngFor="let technology of technologyList" class="d-inline-block col-12 col-md-6">
-                            <input type="checkbox" value={{technology.toLowerCase()}} id={{technology.toLowerCase()}} class="d-inline-block form-control checkbox" formControlName="technology">
-                            <label for={{technology.toLowerCase()}}>{{technology}}</label>
+                        <div *ngFor="let tech of technologyList" class="d-inline-block col-12 col-md-6">
+                            <label for={{tech.value}}>
+                                <input type="checkbox" value={{tech.value}} id={{tech.value}}
+                                    class="d-inline-block form-control checkbox" (change)=OnCheckboxChange($event)>
+                                {{tech.name}}
+                            </label>
                         </div>
                     </div>
                 </div>

@@ -18,7 +18,11 @@ export class NavbarComponent implements OnInit {
     {
       name: "View Users",
       route: 'user/viewUsers',
-    }
+    },
+    {
+      name: "Assignment1",
+      route: "basics",
+    },
   ]
   ngOnInit(): void {
   }

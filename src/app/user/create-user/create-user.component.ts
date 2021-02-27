@@ -1,6 +1,5 @@
-import { TitleCasePipe } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
-import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { FormControl, FormGroup, FormArray, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-create-user',
@@ -26,9 +25,20 @@ export class CreateUserComponent implements OnInit {
       Validators.required,
       Validators.pattern(this.mobileRegex)
     ],
+    category: [
+      Validators.required,
+    ],
+    technology: [],
   }
   categoryOptions = ["General", "OBC", "SC/ST"];
-  technologyList = ["C", "C++", "Java", "Python", "JavaScript"]
+  technologyList = [
+    { name: "C", value: 'c', selected: false },
+    { name: "C++", value: 'c++', selected: false },
+    { name: "Java", value: 'java', selected: false },
+    { name: "Python", value: 'python', selected: false },
+    { name: "JavaScript", value: 'javascript', selected: false },
+  ];
+  selectedTechnologyNames = [];
 
   ngOnInit(): void {
     this.signupForm = new FormGroup({
@@ -36,11 +46,24 @@ export class CreateUserComponent implements OnInit {
       gender: new FormControl('', this.signupFormValidators.gender),
       email: new FormControl('', this.signupFormValidators.email),
       mobile: new FormControl('', this.signupFormValidators.mobile),
-      category: new FormControl(),
-      technology: new FormControl(),
+      category: new FormControl('', this.signupFormValidators.category),
+      technology: this.createTechnologyArray(this.technologyList)
     });
   }
 
+  createTechnologyArray(techList: object[]) {
+    const arr = techList.map((tech: any) => {
+      return new FormControl(tech.selected || false)
+    })
+    return new FormArray(arr)
+  }
+
+  OnCheckboxChange(e: Event) {
+    // this.signupForm.get('technology')?.map(tech=>{
+      console.log('f')
+    // })
+    console.log('checkboxEvent', e)
+  }
   onPreviewClick() {
     console.log('form', this.signupForm)
   }

@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { FormControl, FormGroup, FormArray, Validators } from '@angular/forms';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { ModalService } from 'src/app/modal.service';
 import { REGEX } from './../../../utils/regex';
 @Component({
   selector: 'app-create-user',
@@ -8,8 +9,18 @@ import { REGEX } from './../../../utils/regex';
 })
 export class CreateUserComponent implements OnInit {
 
-  constructor() { }
+  constructor(private _modalService: ModalService) { }
 
+  tempInfoUser: object = {
+    name: 'Emp1',
+    gender: 'male',
+    email: 'abc@emp.com',
+    mobile: '9998889998',
+    category: 'general',
+    technology: ['c', 'c++', 'java']
+  };
+
+  showViewFormModal = this._modalService.showModal;
   checkboxTouched: boolean = false;
   signupForm: FormGroup;
   signupFormValidators = {
@@ -43,6 +54,9 @@ export class CreateUserComponent implements OnInit {
   selectedTechnologyNames: Array<string> = [];
 
   ngOnInit(): void {
+    this._modalService.showModalUpdated.subscribe((state) => {
+      this.showViewFormModal = this._modalService.getShowModal();
+    })
     this.signupForm = new FormGroup({
       name: new FormControl('', this.signupFormValidators.name),
       gender: new FormControl('', this.signupFormValidators.gender),
@@ -71,9 +85,21 @@ export class CreateUserComponent implements OnInit {
       this.selectedTechnologyNames.splice(index, 1);
   }
 
+  getValidUserObject() {
+    return {
+      name: this.signupForm.get('name').value,
+      gender: this.signupForm.get('gender').value,
+      email: this.signupForm.get('email').value,
+      mobile: this.signupForm.get('mobile').value,
+      category: this.signupForm.get('category').value,
+      technology: this.selectedTechnologyNames,
+    }
+  }
+
   onPreviewClick() {
     if (this.signupForm.valid && this.selectedTechnologyNames.length) {
-      alert('Form submit')
+      this.tempInfoUser = this.getValidUserObject();
+      this.showViewFormModal = true;
     } else {
       this.checkboxTouched = true;
       Object.keys(this.signupForm.controls).forEach(field => {

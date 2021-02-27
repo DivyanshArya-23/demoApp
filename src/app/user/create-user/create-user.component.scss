@@ -5,7 +5,7 @@ input.ng-touched.ng-invalid {
 }
 .inputWrapper {
     background: transparent linear-gradient(276deg, $mediumGrey 0%, $very_light_grey 100%) 0% 0% no-repeat padding-box;
-    box-shadow: 3px 3px 3px $very_light_grey, -3px -3px 3px $white;
+    box-shadow: inset 3px 3px 3px $very_light_grey, inset -3px -3px 3px $white;
     border-radius: 20px;
     padding: 5px 15px;
 
@@ -30,9 +30,8 @@ input.ng-touched.ng-invalid {
     }
 }
 .form-group {
-    label {
-        &:first-child{
-
+    .formlabel {
+        &:first-child {
             padding-left: 20px;
             font-weight: 600;
             color: $darkBlue;
@@ -44,4 +43,13 @@ input.ng-touched.ng-invalid {
             padding-left: 20px;
         }
     }
+}
+.checkbox {
+    width: 25px;
+    height: 25px;
+}
+.userForm {
+    border-radius: 20px;
+    box-shadow: $lightGreyBorder;
+    background: rgba(0, 0, 210, 0.1);
 }

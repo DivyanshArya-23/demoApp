@@ -14,7 +14,7 @@ export class UserService {
       email: 'abc@emp.com',
       mobile: '9998889998',
       category: 'general',
-      technology: ['c', 'c++', 'java']
+      technology: ['c', 'c++', 'java', 'javascript', 'python']
     },
     {
       name: 'Dummy 2',

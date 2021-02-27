@@ -8,7 +8,7 @@ export class ModalService {
 
   constructor() { }
 
-  showModal: boolean = true;
+  showModal: boolean = false;
   showModalUpdated: any = new EventEmitter();
 
   toggleModal() {

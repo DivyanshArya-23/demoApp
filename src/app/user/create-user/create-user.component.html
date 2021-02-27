@@ -1,9 +1,9 @@
 <div class="container py-5 mt-3">
     <div class="d-flex flex-row justify-content-center">
-        <div class="col-12 col-md-6">
+        <div class="col-12 col-md-6 p-4 userForm">
             <form [formGroup]="signupForm" (ngSubmit)="onPreviewClick()">
                 <div class="form-group">
-                    <label for="name">Name</label>
+                    <label for="name" class="formlabel">Name</label>
                     <div class="inputWrapper">
                         <input type="text" id="name" class="form-control" formControlName="name">
                     </div>
@@ -20,13 +20,13 @@
                     </span>
                 </div>
                 <div class="form-group">
-                    <label for="gender" class="col-12 col-md-4">Gender</label>
+                    <label for="gender" class="col-12 col-md-4 formlabel">Gender</label>
                     <label class="col-6 col-md-4">
-                        <input class="mr-1" type="radio" value="Male" formControlName="gender">
+                        <input class="mr-1 radioBtn" type="radio" value="Male" formControlName="gender">
                         <span>male</span>
                     </label>
                     <label class="col-6 col-md-4">
-                        <input class="mr-1" type="radio" value="Female" formControlName="gender">
+                        <input class="mr-1 radioBtn" type="radio" value="Female" formControlName="gender">
                         <span>female</span>
                     </label>
                     <span class="formErrorWrapper"
@@ -37,7 +37,7 @@
 
                 </div>
                 <div class="form-group">
-                    <label for="email">Email</label>
+                    <label for="email" class="formlabel">Email</label>
                     <div class="inputWrapper">
                         <input type="email" id="email" class="form-control" formControlName="email">
                     </div>
@@ -50,7 +50,7 @@
                     </span>
                 </div>
                 <div class="form-group">
-                    <label for="mobile">Mobile</label>
+                    <label for="mobile" class="formlabel">Mobile</label>
                     <div class="inputWrapper">
                         <input type="text" id="mobile" class="form-control" formControlName="mobile">
                     </div>
@@ -63,7 +63,7 @@
                     </span>
                 </div>
                 <div class="form-group">
-                    <label for="category">Category</label>
+                    <label for="category" class="formlabel">Category</label>
                     <div class="inputWrapper">
                         <select name="category" id="category" class="form-control" formControlName="category">
                             <option *ngFor="let option of categoryOptions" value={{option.toLowerCase()}}>{{option}}
@@ -77,14 +77,15 @@
                     </span>
                 </div>
                 <div class="form-group">
-                    <label for="name">Technology</label>
-                    <div class="flex-row">
-                        <div *ngFor="let tech of technologyList;let ind=index" class="d-inline-block col-12 col-md-6">
-                            <label for={{tech.value}}>
+                    <label for="name" class="formlabel">Technology</label>
+                    <div class="flex-row d-flex flex-wrap">
+                        <div *ngFor="let tech of technologyList;let ind=index" class="d-inline-block col-12 col-md-6 d-flex flex-row">
+                    
                                 <input type="checkbox" value={{tech.value}} id={{tech.value}}
-                                    class="d-inline-block form-control checkbox" (change)=OnCheckboxChange($event,ind)>
-                                {{tech.name}}
-                            </label>
+                                    class="d-inline-block form-control checkbox mr-2" (change)=OnCheckboxChange($event,ind)>
+                                <label for={{tech.value}}>
+                                    {{tech.name}}
+                                </label>
                         </div>
                     </div>
                     <span class="formErrorWrapper" *ngIf="checkboxTouched">

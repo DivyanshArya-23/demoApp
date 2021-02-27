@@ -11,15 +11,7 @@ export class CreateUserComponent implements OnInit {
 
   constructor(private _modalService: ModalService) { }
 
-  tempInfoUser: object = {
-    name: 'Emp1',
-    gender: 'male',
-    email: 'abc@emp.com',
-    mobile: '9998889998',
-    category: 'general',
-    technology: ['c', 'c++', 'java']
-  };
-
+  tempInfoUser: object = {};
   showViewFormModal = this._modalService.showModal;
   checkboxTouched: boolean = false;
   signupForm: FormGroup;
@@ -63,16 +55,9 @@ export class CreateUserComponent implements OnInit {
       email: new FormControl('', this.signupFormValidators.email),
       mobile: new FormControl('', this.signupFormValidators.mobile),
       category: new FormControl('', this.signupFormValidators.category),
-      // technology: this.createTechnologyArray(this.technologyList)
     });
   }
 
-  // createTechnologyArray(techList: object[]) {
-  //   const arr = techList.map((tech: any) => {
-  //     return new FormControl(tech.selected || false)
-  //   })
-  //   return new FormArray(arr)
-  // }
 
   OnCheckboxChange(e: any, ind: number) {
     if (!this.checkboxTouched)

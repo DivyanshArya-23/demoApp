@@ -11,6 +11,12 @@
                         *ngIf="signupForm.get('name')?.touched && signupForm.get('name')?.errors">
                         <small class="form-text formError" *ngIf="signupForm.get('name')?.errors?.required">Enter
                             Name</small>
+                        <small class="form-text formError" *ngIf="signupForm.get('name')?.errors?.minlength">Minimum 2
+                            Characters Are Required</small>
+                        <small class="form-text formError" *ngIf="signupForm.get('name')?.errors?.maxlength">Maximum 30
+                            Characters Are Allowed</small>
+                        <small class="form-text formError" *ngIf="signupForm.get('name')?.errors?.pattern">Enter Valid
+                            Full Name</small>
                     </span>
                 </div>
                 <div class="form-group">
@@ -23,6 +29,12 @@
                         <input class="mr-1" type="radio" value="Female" formControlName="gender">
                         <span>female</span>
                     </label>
+                    <span class="formErrorWrapper"
+                        *ngIf="signupForm.get('gender')?.touched && signupForm.get('gender')?.errors">
+                        <small class="form-text formError" *ngIf="signupForm.get('gender')?.errors?.required">Select an
+                            Option</small>
+                    </span>
+
                 </div>
                 <div class="form-group">
                     <label for="email">Email</label>
@@ -34,8 +46,7 @@
                         <small class="form-text formError" *ngIf="signupForm.get('email')?.errors?.required">Enter
                             Email</small>
                         <small class="form-text formError" *ngIf="signupForm.get('email')?.errors?.pattern">Enter A
-                            Valid
-                            Email</small>
+                            Valid Email</small>
                     </span>
                 </div>
                 <div class="form-group">
@@ -43,6 +54,13 @@
                     <div class="inputWrapper">
                         <input type="text" id="mobile" class="form-control" formControlName="mobile">
                     </div>
+                    <span class="formErrorWrapper"
+                        *ngIf="signupForm.get('mobile')?.touched && signupForm.get('mobile')?.errors">
+                        <small class="form-text formError" *ngIf="signupForm.get('mobile')?.errors?.required">Enter
+                            Mobile Number</small>
+                        <small class="form-text formError" *ngIf="signupForm.get('mobile')?.errors?.pattern">Enter A
+                            Valid Mobile Number</small>
+                    </span>
                 </div>
                 <div class="form-group">
                     <label for="category">Category</label>
@@ -52,18 +70,27 @@
                             </option>
                         </select>
                     </div>
+                    <span class="formErrorWrapper"
+                        *ngIf="signupForm.get('category')?.touched && signupForm.get('category')?.errors">
+                        <small class="form-text formError" *ngIf="signupForm.get('category')?.errors?.required">Select A
+                            Category</small>
+                    </span>
                 </div>
                 <div class="form-group">
                     <label for="name">Technology</label>
                     <div class="flex-row">
-                        <div *ngFor="let tech of technologyList" class="d-inline-block col-12 col-md-6">
+                        <div *ngFor="let tech of technologyList;let ind=index" class="d-inline-block col-12 col-md-6">
                             <label for={{tech.value}}>
                                 <input type="checkbox" value={{tech.value}} id={{tech.value}}
-                                    class="d-inline-block form-control checkbox" (change)=OnCheckboxChange($event)>
+                                    class="d-inline-block form-control checkbox" (change)=OnCheckboxChange($event,ind)>
                                 {{tech.name}}
                             </label>
                         </div>
                     </div>
+                    <span class="formErrorWrapper" *ngIf="checkboxTouched">
+                        <small class="form-text formError" *ngIf="!selectedTechnologyNames.length">Select At Least One
+                            Technology</small>
+                    </span>
                 </div>
                 <button class="btn btn-primary" type="submit">Preview</button>
             </form>

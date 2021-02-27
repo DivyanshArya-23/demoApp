@@ -1,0 +1,23 @@
+@import "./../../../assets/styles/vars";
+
+.usercard {
+    box-shadow: $cardShadow;
+}
+.tableColHeader {
+    font-weight: 600;
+}
+.dDisplayNone {
+    display: none;
+}
+.label{
+    font-weight: 600;
+}
+
+@media only screen and (max-width: 767px) {
+    .mDisplayNone {
+        display: none;
+    }
+    .dDisplayNone {
+        display: block;
+    }
+}

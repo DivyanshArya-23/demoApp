@@ -9,7 +9,15 @@ export class UserService {
 
   employeeData: Array<object> = [
     {
-      name: 'Emp1',
+      name: 'Dummy 1',
+      gender: 'male',
+      email: 'abc@emp.com',
+      mobile: '9998889998',
+      category: 'general',
+      technology: ['c', 'c++', 'java']
+    },
+    {
+      name: 'Dummy 2',
       gender: 'male',
       email: 'abc@emp.com',
       mobile: '9998889998',

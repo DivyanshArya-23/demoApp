@@ -1,6 +1,8 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { ModalService } from 'src/app/modal.service';
 import { UserService } from '../user.service';
+import { titleCase } from './../../../utils/helper';
 
 @Component({
   selector: 'app-viewform',
@@ -13,10 +15,12 @@ export class ViewformComponent implements OnInit {
   data: any = {};
 
   keys = [];
-
+  submitted = false;
+  titleCase = titleCase;
   constructor(
     private _userService: UserService,
     private _modalService: ModalService,
+    private router: Router,
   ) { }
 
   ngOnInit(): void {
@@ -27,12 +31,14 @@ export class ViewformComponent implements OnInit {
   onCancel() {
     this._modalService.hideModal()
   }
-  capitalize = (s: string) => {
-    return s.charAt(0).toUpperCase() + s.slice(1)
-  }
 
   onSubmit() {
     this._userService.addEmployee(this.data);
-    this._modalService.hideModal()
+    this.submitted = true;
+    setTimeout(() => {
+      this._modalService.hideModal();
+      this.router.navigate(["user/viewUsers"])
+    }, 2000);
+
   }
 }

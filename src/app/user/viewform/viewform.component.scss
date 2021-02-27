@@ -9,7 +9,7 @@
     left: 0;
 }
 .customModal {
-    box-shadow: 3px 3px 3px $angularBlue, -3px -3px 3px $white;
+    box-shadow: $cardShadow;
     background: whitesmoke;
     position: relative;
     transform: translate(-50%, -50%);

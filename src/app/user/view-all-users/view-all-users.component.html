@@ -1,3 +1,22 @@
-<ul>
-    <li *ngFor="let user of fetchedUserData">{{user.name}}</li>
-</ul>
+<div class="flex-row mDisplayNone">
+    <div *ngFor="let key of keys" class="col-2 col-sm-2 tableColHeader d-inline-block">
+        {{titleCase(key)}}
+    </div>
+    <div *ngFor="let user of fetchedUserData" class="flex-row mb-3 usercard">
+        <div *ngFor="let key of keys" class="col-2 col-sm-2 d-inline-block">
+            <!-- <span class="label">{{titleCase(key)}}: </span> -->
+            <span class="data">{{user[key]}}</span>
+        </div>
+    </div>
+</div>
+<div class="flex-row dDisplayNone">
+    <!-- <div *ngFor="let key of keys" class="col-2 col-sm-2 tableColHeader d-inline-block">
+        {{titleCase(key)}}
+    </div> -->
+    <div *ngFor="let user of fetchedUserData" class="flex-row mb-3 usercard">
+        <div *ngFor="let key of keys" class="col-12 d-inline-block">
+            <span class="label">{{titleCase(key)}}: </span>
+            <span class="data">{{user[key]}}</span>
+        </div>
+    </div>
+</div>
